@@ -40,3 +40,13 @@ body {
 .container .cell:nth-of-type(6) {
   border-right: none;
 }
+
+.result {
+  font-family: sans-serif;
+  position: absolute;
+  top: 80px;
+  font-weight: bold;
+  color: Red;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+}
