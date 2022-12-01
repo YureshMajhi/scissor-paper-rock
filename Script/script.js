@@ -1,14 +1,13 @@
 // setting up gameboard object
 const gameBoardModule = (() => {
-  let gameBoard = ["X", "O", "X", "O", "X", "O", "X", "O", "X"];
+  let gameBoard = [];
   return { gameBoard };
 })();
 
 // setting up display controller module
-const displayController = (() => {
-  let testF = () => console.log("this is a test to check the render option");
-  return { testF };
-})();
+const displayController = (() => {})();
+
+const box = document.querySelectorAll(".box");
 
 // setting up PlayerInput feild using factory
 const player = (playerName, playerNumber, assignXO) => {
