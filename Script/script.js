@@ -5,21 +5,35 @@ const gameBoardModule = (() => {
 })();
 
 // setting up display controller module
-const displayController = (() => {})();
+const displayController = (() => {
+  //choosing turn
+  let crossTurn = false;
 
-const box = document.querySelectorAll(".box");
+  // Assigning X and O to players on click
+  const box = document.querySelectorAll(".box");
+  box.forEach((boxes) => {
+    boxes.addEventListener("click", () => {
+      if (boxes.textContent == "") {
+        crossTurn = !crossTurn;
+        boxes.textContent = changeXO(crossTurn);
+      }
+    });
+  });
+})();
+
+// Changing assign value i.e. X and O
+const changeXO = (crossTurn) => {
+  let sign = "";
+  if (crossTurn) {
+    sign = "X";
+  } else {
+    sign = "O";
+  }
+  return sign;
+};
 
 // setting up PlayerInput feild using factory
 const player = (playerName, playerNumber, assignXO) => {
   const getPlayerName = () => playerName;
   return { getPlayerName, playerNumber, assignXO };
 };
-
-// setting up rendering module
-const renderGame = (() => {
-  const box = document.querySelectorAll(".box");
-  for (let i = 0; i < gameBoardModule.gameBoard.length; i++) {
-    box[i].textContent = gameBoardModule.gameBoard[i];
-  }
-  return {};
-})();
