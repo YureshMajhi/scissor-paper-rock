@@ -16,9 +16,26 @@ const gameBoardModule = (() => {
 
 // setting up display controller module
 const displayController = (() => {
+  // setting event on startbtn click
+  document.querySelector("#start-btn").addEventListener("click", () => {
+    document.querySelector("#form").style = "display: none";
+  });
+
+  // setting event on restartbtn click
+  document.querySelector("#restart").addEventListener("click", () => {
+    document.querySelector("#form").style = "display: block;";
+    gameBoardModule.gameBoard.forEach((boxes) => {
+      boxes.textContent = "";
+      boxes.classList.remove("X");
+      boxes.classList.remove("O");
+      endgame = false;
+      crossTurn = false;
+      result.textContent = "";
+    });
+  });
+
+  const result = document.querySelector("#result");
   // setting up controls
-  const X_CLASS = "X";
-  const CIRCLE_CLASS = "O";
   let endgame = false;
 
   //choosing turn
@@ -32,7 +49,7 @@ const displayController = (() => {
         if (boxes.textContent == "") {
           // checking turn
           crossTurn = !crossTurn;
-          const currentClass = crossTurn ? X_CLASS : CIRCLE_CLASS;
+          const currentClass = crossTurn ? "X" : "O";
 
           // displaying on Board
           boxes.textContent = currentClass;
@@ -40,7 +57,11 @@ const displayController = (() => {
           // Checking win using function and currentClass variable
           boxes.classList.add(currentClass);
           if (checkWin(currentClass)) {
-            console.log(`${currentClass} wins`);
+            if (crossTurn) {
+              result.textContent = `${p1.playerName} wins`;
+            } else {
+              result.textContent = `${p2.playerName} wins`;
+            }
             endgame = true;
           }
         }
@@ -61,7 +82,10 @@ const displayController = (() => {
 })();
 
 // setting up PlayerInput feild using factory
-const player = (playerName, playerNumber, assignXO) => {
-  const getPlayerName = () => playerName;
-  return { getPlayerName, playerNumber, assignXO };
+const player = (playerName) => {
+  return { playerName };
 };
+
+// Setting up Players
+const p1 = player(document.querySelector("#p1").value);
+const p2 = player(document.querySelector("#p2").value);

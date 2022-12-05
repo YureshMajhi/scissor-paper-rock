@@ -26,3 +26,68 @@ body {
   line-height: 100px;
   font-size: 60px;
 }
+
+/* Removing excess borders */
+.container .box:first-of-type,
+.container .box:nth-of-type(2),
+.container .box:nth-of-type(3) {
+  border-top: none;
+}
+
+.container .box:nth-of-type(1),
+.container .box:nth-of-type(4),
+.container .box:nth-of-type(7) {
+  border-left: none;
+}
+
+.container .box:nth-of-type(3),
+.container .box:nth-of-type(6),
+.container .box:last-of-type {
+  border-right: none;
+}
+
+.container .box:nth-of-type(7),
+.container .box:nth-of-type(8),
+.container .box:nth-of-type(9) {
+  border-bottom: none;
+}
+
+/*  form  */
+#form {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0);
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+#form section {
+  margin-top: 3rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+input {
+  padding: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin-top: 2rem;
+  border: 1px solid black;
+}
+
+/* result  */
+#result {
+  margin: 2rem;
+  color: green;
+  font-weight: bold;
+  font-size: 2rem;
+}
