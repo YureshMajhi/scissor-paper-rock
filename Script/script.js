@@ -57,6 +57,9 @@ const displayController = (() => {
           // Checking win using function and currentClass variable
           boxes.classList.add(currentClass);
           if (checkWin(currentClass)) {
+            // Setting up Players
+            const p1 = player(document.querySelector("#p1").value);
+            const p2 = player(document.querySelector("#p2").value);
             if (crossTurn) {
               result.textContent = `${p1.playerName} wins`;
             } else {
@@ -85,7 +88,3 @@ const displayController = (() => {
 const player = (playerName) => {
   return { playerName };
 };
-
-// Setting up Players
-const p1 = player(document.querySelector("#p1").value);
-const p2 = player(document.querySelector("#p2").value);
